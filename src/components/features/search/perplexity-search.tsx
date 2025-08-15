@@ -89,10 +89,11 @@ export function PerplexitySearch({ onSearch, onModeChange, className }: Perplexi
 
   return (
     <div className={cn("flex flex-col items-center w-full max-w-4xl mx-auto", className)}>
-      {/* Logo */}
+      {/* Curie Logo */}
       <div className="perplexity-logo flex items-center gap-3 mb-12">
         <Stethoscope className="w-8 h-8 text-primary" />
         <span>curie</span>
+        <span className="text-xs text-muted-foreground ml-2">Radiology AI</span>
       </div>
 
       {/* Search Bar */}

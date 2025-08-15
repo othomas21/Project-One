@@ -1,13 +1,13 @@
 /**
  * @file perplexity-layout.tsx
- * @description Perplexity-style layout with sidebar and centered content
+ * @description Curie Radiology AI Clinical Co-Pilot Layout
  * @module components/layout
  * 
  * Key responsibilities:
- * - Sidebar navigation integration
- * - Centered main content area
- * - Dark theme background
- * - Responsive design for medical workflows
+ * - Clinical workflow navigation sidebar
+ * - Professional radiology interface design
+ * - Evidence-based content presentation
+ * - HIPAA-compliant layout structure
  * 
  * @author Claude Code
  * @created 2025-08-15

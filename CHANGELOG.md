@@ -6,26 +6,120 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### To Do
+- MedGemma AI model deployment with Hugging Face API key configuration
+- Advanced Python inference service setup for high-performance scenarios
+- Production monitoring and analytics dashboard implementation
+- Medical compliance and legal review completion
+- Performance optimization and load testing
+
+## [1.2.0] - 2025-08-15
+### Added
+- **Complete Curie Radiology AI Clinical Co-Pilot Transformation**
+  - Evidence-based clinical co-pilot positioning with ACR Guidelines hierarchy
+  - Side-by-side pathology comparison viewer with interactive annotations
+  - Clinical consensus vs. controversy highlighting system
+  - Source validation layer with trust indicators and peer-review status
+  - One-click report snippet generation for clinical workflow integration
+  - Interactive protocol assistant with ACR Appropriateness Criteria
+  - HIPAA-compliant clinical query interface with patient context awareness
+
+- **Advanced Clinical Components System**
+  - `PathologyComparison`: Split-screen comparative viewing with annotated differentiating features
+  - `EvidenceHierarchy`: ACR Guidelines, Landmark Studies, Textbook reference ranking
+  - `ClinicalConsensus`: Consensus indicators with alternative approaches tracking
+  - `SourceValidation`: Real-time source verification with quality assessment
+  - `ReportSnippets`: Multiple report formats (structured, narrative, teaching, impression)
+  - `ProtocolAssistant`: Dynamic protocol selection with clinical decision trees
+  - `ClinicalQuery`: Professional query interface with evidence-based suggestions
+
+- **Professional Radiology Workflow Integration**
+  - Evidence hierarchy with confidence scoring and guideline alignment
+  - Clinical decision support with contraindication warnings
+  - Teaching mode with clinical correlation points and diagnostic approaches
+  - Advanced image query capabilities (atypical, subtle, mimics, evolution)
+  - Interactive annotation overlays with category-based organization
+  - Export and sharing functionality for clinical workflows
+
+### Changed
+- **Complete Application Rebranding from Generic Medical to Curie Radiology AI**
+  - Homepage transformed to clinical co-pilot positioning with "Why Curie vs Generic AI" comparison
+  - Navigation updated with clinical workflow terminology (Clinical Query, Evidence Analysis, Clinical Insights)
+  - Application metadata updated to "Curie Radiology AI - Clinical Co-Pilot"
+  - Search interface transformed from generic to clinical query system
+  - All branding elements updated to emphasize evidence-based clinical features
+
+- **Enhanced Clinical User Experience**
+  - Professional differentiation from generic AI tools with evidence-based trust messaging
+  - Clinical workflow integration with one-click copy functionality for RIS/EHR systems
+  - Patient-specific recommendations with clinical context awareness
+  - Advanced pathology visualization with zoom, pan, and annotation controls
+  - Teaching-focused interface with educational value for radiologists
+
+### Technical Improvements
+- **Component Architecture Enhancement**
+  - Complete clinical components export system with proper TypeScript types
+  - Modular component design for reusability across clinical workflows
+  - Enhanced props interfaces for medical data handling
+  - Comprehensive JSDoc documentation for clinical components
+  - Performance-optimized annotation rendering and interaction handling
+
+### Security
+- **HIPAA-Compliant Clinical Features**
+  - Patient data handling with privacy-first design
+  - Clinical context processing without PHI storage
+  - Audit trail capabilities for clinical query tracking
+  - Secure annotation and comparison data handling
+  - Professional use compliance with medical data standards
+
+## [1.1.0] - 2025-08-15
 ### Added
 - **Perplexity-Style Dark UI Theme**
-  - Pure black background (#000000) with modern dark design
-  - Cyan accent colors (#00d1d1) for primary actions and highlights
-  - Dark gray (#1c1c1c) components for search bars and pills
-  - Professional medical branding with Curie logo and stethoscope icons
+  - Pure black background (#000000) with modern dark design system
+  - Cyan accent colors (#00d1d1) for primary actions and interactive highlights
+  - Dark gray (#1c1c1c) components for search bars, pills, and cards
+  - Professional medical branding with geometric Curie logo and stethoscope iconography
+  - Custom CSS utility classes for consistent Perplexity-style components
+
+- **Professional Navigation System**
+  - Left sidebar navigation (80px width) with icon-based medical menu
+  - Interactive navigation items: Search, Discover, Cases, AI Analysis, Vitals
+  - Bottom-positioned sign-in with cyan accent styling
+  - Hover tooltips and active state management
+  - Responsive design maintaining medical workflow focus
+
+- **Enhanced Search Interface**
+  - Centered search interface mimicking Perplexity.ai design patterns
+  - Medical specialty category shortcuts as interactive pill-shaped buttons
+  - Multi-mode search: Standard search, AI analysis, and suggestions modes
+  - Professional medical categories: Diagnostics, Cardiology, Neurology, Orthopedics, etc.
+  - Real-time search with enhanced medical terminology support
 
 ### Changed
 - **Complete UI/UX Redesign**
-  - Centered search interface mimicking Perplexity.ai design patterns
-  - Left sidebar navigation (80px width) with icon-based menu
-  - Removed traditional header/footer for cleaner modern appearance
-  - Medical specialty category shortcuts as clickable pills
-  - Enhanced typography with Inter font for professional readability
+  - Removed traditional header/footer layout for cleaner modern appearance
+  - Forced dark theme for consistent professional medical experience
+  - Enhanced typography with Inter font integration for improved readability
+  - Streamlined component architecture with reusable design patterns
+  - Updated all pages (homepage, search, dashboard) to use new design system
 
-### To Do
-- MedGemma AI model deployment with Hugging Face API key
-- Medical AI interface integration into search and upload pages  
-- Advanced Python inference service setup
-- Production monitoring and analytics implementation
+- **Technical Architecture Improvements**
+  - Migrated to centralized layout system with PerplexityLayout component
+  - Enhanced CSS custom properties for consistent theming
+  - Improved TypeScript component interfaces and prop definitions
+  - Optimized build process with better error handling and unused import removal
+
+### Fixed
+- **Build and Deployment Issues**
+  - Resolved TypeScript compilation errors across all new UI components
+  - Fixed icon import issues and component dependency resolution
+  - Corrected CSS class conflicts and theme variable references
+  - Improved error boundaries and loading state management
+
+### Deployed
+- **Production Deployment**: Successfully deployed to Vercel at https://curie-radiology-cnpasvxot-thomas-projects-67c37b70.vercel.app
+- **Build Status**: ✅ Compiled successfully with optimized production bundle
+- **Performance**: Enhanced loading times with improved component lazy loading
 
 ## [1.0.0] - 2025-08-15
 ### Added

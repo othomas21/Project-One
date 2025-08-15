@@ -14,8 +14,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Curie - AI Medical Imaging Platform',
-  description: 'Perplexity-style AI-powered medical imaging search and analysis platform for healthcare professionals',
+  title: 'Curie Radiology AI - Clinical Co-Pilot',
+  description: 'Evidence-based clinical co-pilot for radiology professionals. HIPAA-compliant medical queries with ACR guidelines, differential diagnosis support, and workflow integration.',
 };
 
 export default function RootLayout({

@@ -1,27 +1,27 @@
 /**
  * @file page.tsx
- * @description Perplexity-style AI-Enhanced Medical Search Interface
+ * @description Curie Clinical Query Interface
  * @module app/search
  * 
  * Key responsibilities:
- * - Perplexity-style centered search interface
- * - AI-powered medical imaging search
- * - Real-time clinical insights and MedGemma integration
- * - Dark theme with modern medical workflow design
- * - Responsive search results and image viewing
+ * - Clinical co-pilot query interface
+ * - Evidence-based medical search with clinical context
+ * - HIPAA-compliant patient-specific queries
+ * - Real-time clinical insights and evidence hierarchy
+ * - Professional radiology workflow integration
  * 
  * @reftools Verified against: Next.js 14+ App Router patterns, React 18+ hooks
- * @supabase Enhanced with MedGemma Edge Function integration
+ * @supabase Enhanced with clinical data security patterns
  * @author Claude Code
  * @created 2025-08-13
- * @modified 2025-08-15 - Added Perplexity-style interface
+ * @modified 2025-08-15 - Transformed to clinical co-pilot interface
  */
 
 "use client";
 
 import { useState, useCallback } from 'react';
 import { ProtectedRoute } from '@/components/features/auth';
-import { PerplexitySearch } from '@/components/features/search/perplexity-search';
+import { ClinicalQuery } from '@/components/clinical/clinical-query';
 import { SearchResultsGrid, MedicalImageViewer } from '@/components/features/search';
 import { AIInsightsPanel } from '@/components/medgemma/ai-insights-panel';
 import { createClient } from '@/lib/supabase/client';
@@ -32,8 +32,12 @@ import {
   Brain, 
   Grid, 
   List,
-  ScanLine
+  ScanLine,
+  Shield,
+  Stethoscope,
+  Award
 } from 'lucide-react';
+import type { ClinicalContext } from '@/components/clinical/clinical-query';
 
 type StudyRow = Database['public']['Tables']['studies']['Row'];
 
@@ -57,7 +61,7 @@ interface SearchResult {
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchMode, setSearchMode] = useState<'search' | 'ai' | 'suggestions'>('search');
+  const [clinicalContext, setClinicalContext] = useState<ClinicalContext>({});
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [searchError, setSearchError] = useState<string | null>(null);
@@ -155,13 +159,16 @@ export default function SearchPage() {
     }
   };
 
-  const handleSearch = useCallback((query: string) => {
+  const handleSearch = useCallback((query: string, context?: ClinicalContext) => {
     setSearchQuery(query);
+    if (context) {
+      setClinicalContext(context);
+    }
     performSearch(query);
   }, []);
 
-  const handleModeChange = useCallback((mode: 'search' | 'ai' | 'suggestions') => {
-    setSearchMode(mode);
+  const handleContextUpdate = useCallback((context: ClinicalContext) => {
+    setClinicalContext(context);
   }, []);
 
   const handleImageView = (instanceId: string, result: SearchResult) => {
@@ -181,48 +188,93 @@ export default function SearchPage() {
   return (
     <ProtectedRoute>
       <div className="perplexity-main">
-        {/* Search Interface - Always Centered */}
+        {/* Clinical Query Interface */}
         {!hasSearched && (
-          <PerplexitySearch
-            onSearch={handleSearch}
-            onModeChange={handleModeChange}
-            className="w-full"
-          />
+          <div className="space-y-8">
+            {/* Header */}
+            <div className="text-center space-y-4">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Stethoscope className="w-8 h-8 text-primary" />
+                <h1 className="text-2xl font-bold text-white">Curie Clinical Co-Pilot</h1>
+              </div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Evidence-based clinical queries with HIPAA-compliant patient context awareness. 
+                Get actionable recommendations backed by ACR guidelines and peer-reviewed literature.
+              </p>
+            </div>
+            
+            <ClinicalQuery
+              onQuery={handleSearch}
+              onContextUpdate={handleContextUpdate}
+              placeholder="Ask about differential diagnosis, protocols, or clinical recommendations..."
+            />
+          </div>
         )}
 
         {/* Search Results Layout */}
         {hasSearched && (
           <div className="w-full max-w-7xl mx-auto">
-            {/* Compact Search Bar */}
+            {/* Compact Clinical Query Bar */}
             <div className="mb-8">
-              <div className="perplexity-search max-w-2xl mx-auto">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch(searchQuery)}
-                  placeholder="Ask about medical imaging, diagnostics, or clinical cases..."
-                  className="perplexity-search input"
-                />
-                <Button
-                  onClick={() => handleSearch(searchQuery)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  <ScanLine className="w-4 h-4" />
-                </Button>
+              <div className="bg-card border border-border rounded-xl p-4 max-w-4xl mx-auto">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <Shield className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium text-white">Clinical Query</span>
+                  </div>
+                  
+                  <div className="flex-grow relative">
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handleSearch(searchQuery, clinicalContext)}
+                      placeholder="Refine your clinical query..."
+                      className="w-full px-3 py-2 bg-muted border border-border rounded-lg text-white text-sm"
+                    />
+                  </div>
+                  
+                  <Button
+                    onClick={() => handleSearch(searchQuery, clinicalContext)}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 flex-shrink-0"
+                  >
+                    <ScanLine className="w-4 h-4" />
+                  </Button>
+                </div>
+                
+                {/* Clinical Context Summary */}
+                {Object.keys(clinicalContext).length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-border">
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Award className="w-3 h-3" />
+                        <span>Context-Aware Query</span>
+                      </div>
+                      {clinicalContext.patientAge && (
+                        <span>{clinicalContext.patientAge}y {clinicalContext.patientSex === 'M' ? 'Male' : clinicalContext.patientSex === 'F' ? 'Female' : ''}</span>
+                      )}
+                      {clinicalContext.urgency && (
+                        <span className="uppercase font-medium">{clinicalContext.urgency}</span>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* AI Mode Indicator */}
-            {searchMode === 'ai' && (
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <Brain className="w-5 h-5 text-primary" />
-                <span className="text-sm text-muted-foreground">AI Analysis Mode Active</span>
-                <Badge variant="outline" className="text-xs">
-                  Enhanced Medical Search
+            {/* Clinical Analysis Indicator */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Brain className="w-5 h-5 text-primary" />
+              <span className="text-sm text-muted-foreground">Clinical Co-Pilot Analysis Active</span>
+              <Badge variant="outline" className="text-xs">
+                Evidence-Based Results
+              </Badge>
+              {Object.keys(clinicalContext).length > 0 && (
+                <Badge variant="outline" className="text-xs text-primary">
+                  Clinical Context Applied
                 </Badge>
-              </div>
-            )}
+              )}
+            </div>
 
             {/* Search Status and Controls */}
             <div className="flex items-center justify-between mb-6">

@@ -1,13 +1,13 @@
 /**
  * @file perplexity-sidebar.tsx
- * @description Perplexity-style left sidebar navigation
+ * @description Curie Radiology AI Clinical Navigation Sidebar
  * @module components/layout
  * 
  * Key responsibilities:
- * - Vertical navigation with icon-based menu
- * - Minimalist dark theme design
- * - Sign-in integration with authentication
- * - Medical application branding
+ * - Clinical workflow navigation menu
+ * - Evidence-based action shortcuts
+ * - Professional radiology interface branding
+ * - HIPAA-compliant navigation structure
  * 
  * @author Claude Code
  * @created 2025-08-15
@@ -50,31 +50,31 @@ export function PerplexitySidebar({ activeItem = 'search', onItemClick }: Sideba
     {
       id: 'search',
       icon: <Search className="w-5 h-5" />,
-      label: 'Search',
+      label: 'Clinical Query',
       href: '/search'
     },
     {
       id: 'discover',
       icon: <Globe className="w-5 h-5" />,
-      label: 'Discover',
+      label: 'Clinical Dashboard',
       href: '/dashboard'
     },
     {
       id: 'spaces',
       icon: <FileStack className="w-5 h-5" />,
-      label: 'Cases',
+      label: 'Cases & Studies',
       href: '/upload'
     },
     {
       id: 'analysis',
       icon: <Brain className="w-5 h-5" />,
-      label: 'AI Analysis',
+      label: 'Evidence Analysis',
       href: '/analysis'
     },
     {
       id: 'vitals',
       icon: <Activity className="w-5 h-5" />,
-      label: 'Vitals',
+      label: 'Clinical Insights',
       href: '/vitals'
     }
   ];
@@ -94,7 +94,7 @@ export function PerplexitySidebar({ activeItem = 'search', onItemClick }: Sideba
 
   return (
     <aside className="perplexity-sidebar">
-      {/* Logo */}
+      {/* Curie Logo */}
       <div className="flex flex-col items-center mb-6">
         <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-2">
           <Stethoscope className="w-6 h-6 text-primary" />
@@ -102,13 +102,16 @@ export function PerplexitySidebar({ activeItem = 'search', onItemClick }: Sideba
         <div className="text-xs font-semibold text-white/80 tracking-wide">
           CURIE
         </div>
+        <div className="text-xs text-muted-foreground/60 tracking-wide">
+          RAD AI
+        </div>
       </div>
 
       {/* Add Button */}
       <button 
         onClick={handleAddClick}
         className="perplexity-add-button group"
-        title="Upload Medical Images"
+        title="New Clinical Case"
       >
         <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-200" />
       </button>

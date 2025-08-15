@@ -197,7 +197,7 @@ When the user mentions UI changes or issues, ALWAYS suggest running appropriate 
 - Performance optimization and compliance testing
 - Advanced testing patterns and best practices
 
-## 🏗️ CODE ARCHITECTURE & MAINTAINABILITY STANDARDS
+## 🗏 CODE ARCHITECTURE & MAINTAINABILITY STANDARDS
 
 ### Architecture Patterns (MANDATORY)
 Every project MUST follow these architectural principles:
@@ -1952,5 +1952,294 @@ NEVER create files unless they're absolutely necessary for achieving your goal.
 ALWAYS prefer editing an existing file to creating a new one.
 NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
 
-      
-      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.
+---
+
+# Curie Radiology AI — Enhanced Clinical Co-Pilot Platform
+
+## Project Vision: From Answer Engine to Clinical Co-Pilot
+
+Curie is not just a search engine for radiology—it is a **professional-grade clinical co-pilot** designed to seamlessly integrate into radiologists' workflows, anticipate their needs, and help them deliver more accurate and efficient patient care. Unlike generic AI tools like Google's AI Overviews, Curie provides a **defensible moat** through trust, verifiability, workflow integration, and enterprise-grade security specifically tailored for medical professionals.
+
+## Core Strategic Principles
+
+### The Evolution: Clinical Co-Pilot Architecture
+Curie transcends the simple "answer engine" paradigm by becoming an intelligent assistant that:
+- **Assists in Workflows**: Not just answering questions but helping complete tasks
+- **Anticipates Needs**: Predicting follow-up questions and next steps
+- **Ensures Accuracy**: Providing evidence-based, verifiable information
+- **Saves Time**: Generating actionable outputs ready for clinical use
+- **Maintains Security**: Operating in a HIPAA-compliant, secure environment
+
+## Key Feature Pillars & Workflow Modes
+
+### Layer 1: The Trust & Verifiability Layer
+
+This foundational layer ensures that every piece of information provided by Curie meets the highest standards of medical evidence and transparency.
+
+#### Evidence Hierarchy System
+Unlike generic AI that mixes sources indiscriminately, Curie implements a sophisticated evidence ranking system:
+
+**Visual Evidence Labels:**
+- 🏛️ **ACR Appropriateness Criteria** - Society-level guidelines
+- 🏆 **Landmark Study** - Peer-reviewed research (e.g., NEJM, Radiology)
+- 📚 **Textbook Reference** - Established educational resources
+- 🔬 **Review Article** - Systematic reviews and meta-analyses
+- 📊 **Case Series** - Clinical experience documentation
+- 📝 **Expert Opinion** - Individual specialist recommendations
+
+**Implementation Example:**
+```
+Query: "Ring-enhancing lesion differential in immunocompromised patient"
+
+Response with Evidence Hierarchy:
+1. Toxoplasmosis [Most likely]
+   🏛️ ACR Neuroimaging Guidelines (2024)
+   🏆 NEJM Study: "CNS Infections in HIV" (2023, n=500)
+   
+2. Primary CNS Lymphoma
+   📚 Osborn's Brain, 3rd Ed. Chapter 12
+   🔬 Radiographics Review (2024): "AIDS-related CNS Lymphoma"
+```
+
+#### Consensus & Controversy Highlighting
+Curie uniquely identifies and presents both medical consensus and areas of ongoing debate:
+
+**Consensus Identification:**
+- Highlights where guidelines align across major societies
+- Shows strength of recommendations (strong, moderate, weak)
+- Indicates level of evidence (Level 1A through 5)
+
+**Controversy Management:**
+```
+Query: "Follow-up for Bosniak IIF renal cyst"
+
+Curie Response:
+📊 CONSENSUS: Major guidelines recommend imaging at 6, 12, and 24 months
+   - ACR (2024): Strong recommendation, Level 2 evidence
+   - European Society: Agrees with timeline
+
+⚠️ EMERGING DEBATE: 
+   - Recent Radiology study (2024, n=300): Suggests 12-month initial interval 
+     for lesions <2cm shows no progression risk
+   - Alternative approach gaining traction in literature
+   
+💡 Clinical Context: Consider patient age and comorbidities when deciding
+```
+
+### Layer 2: The Workflow Integration Layer
+
+This layer transforms Curie from a reference tool into an active participant in the radiologist's workflow.
+
+#### Actionable Report Snippets
+Every piece of clinical information comes with a ready-to-use report snippet that can be directly inserted into radiology reports:
+
+**Smart Copy Features:**
+- **One-Click Copy**: Pre-formatted text for radiology reports
+- **Style Options**: Structured vs. narrative reporting formats
+- **Context Preservation**: Maintains clinical context and patient specifics
+
+**Example Implementation:**
+```
+Differential for "Ring-enhancing lesion in left frontal lobe":
+
+[Copy as Structured Report] [Copy as Narrative] [Copy as Teaching Point]
+
+📋 Ready-to-paste snippet:
+"FINDINGS: There is a 2.5 cm ring-enhancing lesion in the left frontal lobe 
+demonstrating peripheral enhancement with central hypointensity. Surrounding 
+vasogenic edema is present.
+
+IMPRESSION: Ring-enhancing lesion in the left frontal lobe. Given the patient's 
+immunocompromised status (CD4 count 150), the differential diagnosis includes:
+1. Toxoplasmosis (most likely given location and immune status)
+2. Primary CNS lymphoma
+3. Pyogenic abscess
+
+Recommend: MR spectroscopy and empiric toxoplasmosis treatment with 
+follow-up imaging in 2-3 weeks to assess response."
+```
+
+#### Interactive Protocoling Assistant
+Beyond simple recommendations, this feature provides dynamic, conversational protocol selection based on standard guidelines:
+
+**Interactive Decision Trees:**
+```
+Initial Query: "PE protocol for patient with contrast allergy"
+
+Curie's Interactive Response:
+Recommended: V/Q Scan (Given contrast allergy)
+
+Follow-up Options:
+👉 "What if the chest X-ray shows consolidation?"
+   → Consider D-dimer if low clinical probability
+   
+👉 "What if patient is pregnant?"
+   → V/Q scan remains safe; use reduced dose protocol per ACR guidelines
+   
+👉 "Show standard V/Q protocol parameters"
+   → [Displays standard protocol details from literature]
+   
+👉 "Alternative if V/Q unavailable?"
+   → Consider MR angiography with gadolinium if no contraindication
+```
+
+**Protocol Guidance:**
+- References ACR Appropriateness Criteria
+- Adapts to patient-specific contraindications
+- Provides evidence-based alternatives
+- Includes standard technical parameters
+
+### Layer 3: The Deep Multimodal & Comparative Layer
+
+This layer leverages advanced visualization and comparison capabilities that go far beyond simple image retrieval.
+
+#### Side-by-Side Visual Comparison Engine
+Interactive comparative viewing with annotated differentiating features:
+
+**Comparative Analysis Features:**
+- **Split-Screen Viewing**: Multiple pathologies displayed simultaneously
+- **Annotated Callouts**: Key differentiating features highlighted
+- **Interactive Overlays**: Toggle between different imaging sequences
+- **Teaching Annotations**: Educational points embedded in images
+
+**Example Implementation:**
+```
+Query: "Compare glioblastoma vs CNS lymphoma appearance"
+
+Visual Output:
+[Left Panel: Glioblastoma]        [Right Panel: CNS Lymphoma]
+- Thick, irregular enhancement    - Homogeneous enhancement
+- Central necrosis (arrow)        - Minimal necrosis
+- Crosses corpus callosum         - Periventricular location
+- Heterogeneous on T2             - Hypointense on T2
+
+[Toggle: DWI] [Toggle: Perfusion] [Toggle: Spectroscopy]
+```
+
+#### Advanced Image Query Capabilities
+Beyond basic examples, Curie provides nuanced image retrieval:
+
+**Specialized Query Types:**
+- **"Show me an atypical presentation"**: Displays unusual manifestations
+- **"Show me a commonly missed subtle case"**: Highlights pitfall cases
+- **"Show me the earliest detectable stage"**: Educational progression
+- **"Show me post-treatment changes"**: Treatment response patterns
+- **"Show me mimics of this finding"**: Differential visual library
+
+**Case Complexity Levels:**
+```
+Query: "Subdural hematoma examples"
+
+Curie Options:
+📚 Classic Presentation (Teaching case)
+🔍 Subtle/Early Finding (High-yield for boards)
+⚠️ Commonly Missed (Bilateral isodense)
+🎭 Atypical Appearance (Mixed density)
+🔄 Evolution Over Time (Acute → Chronic series)
+❓ Mimics (Pachymeningitis, hygroma)
+```
+
+### Layer 4: The Security & Context-Awareness Layer
+
+This layer provides the ultimate competitive moat through HIPAA-compliant functionality optimized for clinical use.
+
+#### The HIPAA Safe Harbor
+A secure environment for detailed clinical queries with patient-specific information:
+
+**Secure Query Capabilities:**
+```
+Generic Search Engine Query (Unsafe):
+"ring enhancing brain lesion HIV"
+
+Curie Secure Query (HIPAA-Compliant):
+"42-year-old male, HIV+ with CD4 count 150, presenting with headache and 
+fever. MRI shows solitary 2.5cm ring-enhancing lesion in left basal ganglia 
+with minimal surrounding edema. No hemorrhage on SWI. Patient from endemic 
+toxoplasmosis region."
+
+Enhanced Curie Response:
+- Specific differential based on exact location and size
+- Considers endemic exposures
+- Integrates CD4 count for probability weighting
+- Suggests specific additional sequences based on findings
+- Provides evidence-based treatment recommendations
+```
+
+**Privacy Features:**
+- End-to-end encryption for all queries
+- Automatic PHI detection and anonymization
+- Audit trails for compliance
+- Zero-retention policy for patient data
+- SOC 2 Type II certification
+
+### 3. Interactive Learning & Teaching Mode
+
+Enhanced with the new layered approach for more sophisticated education:
+
+**Progressive Learning Paths:**
+- **Evidence-Based Teaching**: Shows the evidence hierarchy for each fact
+- **Controversy Discussions**: Presents both sides of debated topics
+- **Case-Based Reasoning**: Interactive cases with evidence trails
+- **Protocol Mastery**: Interactive protocol selection training based on ACR guidelines
+- **Visual Pattern Recognition**: Side-by-side comparison exercises
+
+**Example Learning Module:**
+```
+Topic: "Understanding Ring-Enhancing Lesions"
+
+Learning Path:
+1. Basic Concepts (with evidence levels)
+2. Classic vs Atypical Presentations (visual comparisons)
+3. Differential Diagnosis Framework (evidence-based)
+4. Protocol Selection (ACR guidelines)
+5. Report Writing Practice (with snippet generation)
+6. Quiz Mode (board-style questions)
+```
+
+## Foundational Technical Pillars
+
+### AI-First Architecture with Clinical Intelligence
+- **Medical Knowledge Graph**: Expert-vetted relationships and pathways
+- **Evidence Ranking Engine**: Automatic source quality assessment
+- **Workflow Prediction**: Anticipates next clinical questions
+- **Context Preservation**: Maintains case context across queries
+
+### Multimodal Retrieval with Comparative Analysis
+- **Semantic Image Search**: Beyond metadata to visual features
+- **Comparative Rendering**: Side-by-side pathology comparison
+- **Temporal Analysis**: Shows disease progression
+- **Annotation Layer**: Interactive educational overlays
+
+### Trust & Verification Infrastructure
+- **Source Verification**: Real-time validation of citations
+- **Audit Trail**: Complete query and response logging
+- **Confidence Scoring**: Transparent AI confidence levels
+- **Expert Review Queue**: Flagging for human verification when needed
+
+### Enterprise Security & Compliance
+- **HIPAA Compliance**: Full regulatory adherence
+- **Role-Based Access**: Customized for residents, attendings, techs
+- **Data Residency**: Options for cloud deployment with security
+- **Zero-Trust Architecture**: End-to-end encryption
+
+## The Competitive Moat: Why Curie Beats Generic AI
+
+### What Generic AI Cannot Provide:
+1. **Trust**: No evidence hierarchy or source verification
+2. **Security**: Cannot handle PHI or patient-specific data
+3. **Integration**: No workflow tools or report generation
+4. **Medical Specificity**: Lacks radiology-focused knowledge
+5. **Accountability**: No audit trails or compliance features
+
+### What Curie Uniquely Delivers:
+1. **Clinical Confidence**: Every answer backed by ranked evidence
+2. **Workflow Efficiency**: One-click report snippets and protocol selection
+3. **Educational Depth**: Interactive learning with visual comparisons
+4. **HIPAA Compliance**: Secure handling of clinical queries
+5. **Professional Grade**: Built by radiologists, for radiologists
+
+## Vision: The Indispensable Clinical Co-Pilot
+
+Curie represents a paradigm shift in radiology AI—from a tool that provides information to a partner that enhances clinical practice. By combining trust, workflow integration, deep multimodal capabilities, and enterprise security, Curie creates an unassailable position as the professional's choice for radiology AI assistance.
+
+The platform doesn't just answer questions; it anticipates needs, streamlines workflows, ensures accuracy, and ultimately helps radiologists provide better patient care. This is not just an AI tool—it's a clinical co-pilot that becomes indispensable to modern radiology practice.
