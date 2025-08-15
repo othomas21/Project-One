@@ -30,9 +30,7 @@ import {
   Lightbulb,
   ArrowRight,
   Microscope,
-  Activity,
-  Heart,
-  Bone
+  Activity
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -284,7 +282,6 @@ function SmartSuggestions({ suggestions, onSelect, className }: SmartSuggestions
 export function ClinicalQuery({ onQuery, onContextUpdate, placeholder, className }: ClinicalQueryProps) {
   const [query, setQuery] = useState('');
   const [context, setContext] = useState<ClinicalContext>({});
-  const [isContextVisible, setIsContextVisible] = useState(false);
   const [queryMode, setQueryMode] = useState<'simple' | 'clinical'>('simple');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -345,7 +342,6 @@ export function ClinicalQuery({ onQuery, onContextUpdate, placeholder, className
   const toggleQueryMode = () => {
     const newMode = queryMode === 'simple' ? 'clinical' : 'simple';
     setQueryMode(newMode);
-    setIsContextVisible(newMode === 'clinical');
   };
 
   return (
