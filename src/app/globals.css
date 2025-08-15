@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Perplexity-style dark theme as default */
+    --background: 0 0% 0%; /* Pure black #000000 */
+    --foreground: 0 0% 100%; /* Pure white text */
+    --card: 0 0% 6.7%; /* #111111 for sidebar */
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 11%; /* #1c1c1c for search bar */
+    --popover-foreground: 0 0% 100%;
+    --primary: 180 100% 41%; /* Cyan #00d1d1 */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 11%; /* #1c1c1c */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 11%; /* #1c1c1c */
+    --muted-foreground: 0 0% 60%; /* Light gray for placeholder text */
+    --accent: 0 0% 31%; /* Medium gray #4f4f4f */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%; /* Dark borders */
+    --input: 0 0% 11%; /* #1c1c1c for inputs */
+    --ring: 180 100% 41%; /* Cyan focus ring */
+    --radius: 0.75rem; /* Slightly more rounded for modern look */
+    
+    /* Perplexity-specific custom variables */
+    --sidebar-bg: 0 0% 6.7%; /* #111111 */
+    --search-bg: 0 0% 11%; /* #1c1c1c */
+    --pill-bg: 0 0% 11%; /* #1c1c1c */
+    --cyan-accent: 180 100% 41%; /* #00d1d1 */
+  }
+
+  .dark {
+    /* Keep same dark theme for consistency */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 6.7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 180 100% 41%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 31%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 11%;
+    --ring: 180 100% 41%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Medical imaging specific styles */
+  .medical-dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  .transition-theme {
+    transition: all 0.3s ease;
+  }
+  
+  /* High contrast mode for medical professionals */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+  }
+}
+
+@layer utilities {
+  /* Perplexity-style component utilities */
+  .perplexity-sidebar {
+    @apply fixed left-0 top-0 h-full w-20 bg-card border-r border-border flex flex-col items-center py-4;
+  }
+  
+  .perplexity-main {
+    @apply ml-20 min-h-screen flex flex-col items-center justify-center p-8;
+  }
+  
+  .perplexity-logo {
+    @apply text-white text-3xl font-light lowercase tracking-wide mb-8;
+    font-family: 'Inter', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  }
+  
+  .perplexity-search {
+    @apply w-full max-w-2xl bg-input rounded-xl p-4 flex items-center gap-3 shadow-lg;
+    background-color: hsl(var(--search-bg));
+  }
+  
+  .perplexity-search input {
+    @apply flex-1 bg-transparent text-white placeholder-muted-foreground border-none outline-none text-lg;
+  }
+  
+  .perplexity-icon-button {
+    @apply w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-accent/20 transition-all duration-200;
+  }
+  
+  .perplexity-icon-button.active {
+    @apply text-primary bg-primary/10;
+  }
+  
+  .perplexity-pill {
+    @apply px-4 py-2 rounded-full text-white text-sm font-medium transition-all duration-200 hover:bg-accent/30;
+    background-color: hsl(var(--pill-bg));
+  }
+  
+  .perplexity-nav-icon {
+    @apply w-12 h-12 rounded-xl flex flex-col items-center justify-center text-muted-foreground hover:text-white hover:bg-accent/20 transition-all duration-200 mb-4;
+  }
+  
+  .perplexity-nav-icon.active {
+    @apply text-primary bg-primary/10;
+  }
+  
+  .perplexity-nav-icon span {
+    @apply text-xs mt-1 font-medium;
+  }
+  
+  .perplexity-add-button {
+    @apply w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white hover:bg-accent/80 transition-all duration-200 mb-8;
+  }
+  
+  .perplexity-signin {
+    @apply flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 mt-auto;
+  }
+  
+  /* Custom scrollbar for dark theme */
+  .perplexity-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .perplexity-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .perplexity-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent));
+    border-radius: 3px;
+  }
+  
+  .perplexity-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
