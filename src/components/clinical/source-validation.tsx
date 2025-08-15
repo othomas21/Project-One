@@ -67,7 +67,6 @@ interface SourceValidationProps {
   sourceName: string;
   sourceUrl?: string;
   className?: string;
-  showDetailedChecks?: boolean;
 }
 
 interface TrustIndicatorProps {
@@ -167,8 +166,7 @@ export function SourceValidation({
   validation, 
   sourceName, 
   sourceUrl, 
-  className,
-  showDetailedChecks = false 
+  className 
 }: SourceValidationProps) {
   const [showDetails, setShowDetails] = useState(false);
   
