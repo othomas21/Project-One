@@ -22,11 +22,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
   Brain, 
-  Stethoscope, 
   Shield, 
-  FileImage,
-  Activity,
-  Scan,
   BookOpen,
   Users,
   CheckCircle,
