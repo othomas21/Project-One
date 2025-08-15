@@ -21,11 +21,9 @@ import { Button } from '@/components/ui/button';
 import { 
   Copy, 
   FileText, 
-  BookOpen, 
   Clipboard, 
   CheckCircle, 
   Download,
-  Share,
   Eye,
   Code,
   AlignLeft,
