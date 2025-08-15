@@ -15,16 +15,12 @@
 
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
-  Play,
-  Pause,
-  RotateCw,
   ZoomIn,
   ZoomOut,
-  Move,
   Eye,
   EyeOff,
   BookOpen,
@@ -32,12 +28,9 @@ import {
   Target,
   ArrowRight,
   Info,
-  AlertCircle,
   CheckCircle,
-  X,
   Maximize,
-  Download,
-  Share
+  Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -81,14 +74,12 @@ interface PathologyComparisonProps {
   leftImage: PathologyImage;
   rightImage: PathologyImage;
   title: string;
-  comparisonType: 'differential' | 'evolution' | 'atypical' | 'mimics';
   className?: string;
 }
 
 interface ImageViewerProps {
   image: PathologyImage;
   annotations: Annotation[];
-  position: 'left' | 'right';
   onAnnotationToggle: (annotationId: string) => void;
   visibleAnnotations: Set<string>;
   className?: string;
@@ -188,7 +179,6 @@ function AnnotationOverlay({ annotation, isVisible, onToggle }: AnnotationOverla
 function ImageViewer({ 
   image, 
   annotations, 
-  position, 
   onAnnotationToggle, 
   visibleAnnotations, 
   className 
@@ -295,13 +285,10 @@ export function PathologyComparison({
   leftImage, 
   rightImage, 
   title, 
-  comparisonType, 
   className 
 }: PathologyComparisonProps) {
   const [visibleAnnotations, setVisibleAnnotations] = useState<Set<string>>(new Set());
-  const [comparisonMode, setComparisonMode] = useState<ComparisonMode>('side-by-side');
   const [showTeachingMode, setShowTeachingMode] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'differential' | 'teaching' | 'technical'>('all');
 
   // Mock annotations - in real implementation, these would come from the backend
   const leftAnnotations: Annotation[] = [
@@ -488,7 +475,6 @@ export function PathologyComparison({
         <ImageViewer
           image={leftImage}
           annotations={leftAnnotations}
-          position="left"
           onAnnotationToggle={handleAnnotationToggle}
           visibleAnnotations={visibleAnnotations}
         />
@@ -496,7 +482,6 @@ export function PathologyComparison({
         <ImageViewer
           image={rightImage}
           annotations={rightAnnotations}
-          position="right"
           onAnnotationToggle={handleAnnotationToggle}
           visibleAnnotations={visibleAnnotations}
         />

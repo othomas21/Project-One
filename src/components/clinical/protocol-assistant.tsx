@@ -275,7 +275,7 @@ export function ProtocolAssistant({ indication, patientFactors, className }: Pro
       options: [
         { label: "Head/Neck", value: "head", icon: Brain },
         { label: "Chest", value: "chest", icon: Heart },
-        { label: "Abdomen/Pelvis", value: abdomen", icon: Activity },
+        { label: "Abdomen/Pelvis", value: "abdomen", icon: Activity },
         { label: "Musculoskeletal", value: "msk", icon: Bone }
       ]
     }
