@@ -19,6 +19,17 @@ docs/**
 *.md
 CHANGELOG.md
 README.md
+ACTIVATION_SUCCESS.md
+COMPLETION_STATUS.md
+MEDGEMMA_ACTIVATION_GUIDE.md
+MIGRATION_VALIDATION_REPORT.md
+SUPABASE_DEPLOYMENT_GUIDE.md
+DEPLOYMENT_GUIDE.md
+DEPLOY_INSTRUCTIONS.md
+ARCHITECTURE.md
+reftools-instructions.md
+supabase-reference-enhanced.md
+vercel-deployment-enhanced.md
 
 # Scripts
 scripts/**
@@ -27,6 +38,7 @@ scripts/**
 .env.local
 .env.example
 dev.log
+cluade.md
 
 # Build artifacts
 tsconfig.tsbuildinfo
@@ -41,3 +53,9 @@ build
 # Temporary files
 *.tmp
 *.log
+
+# Design files
+Design Example Prompt/**
+
+# Large binary files
+tests-examples/**
