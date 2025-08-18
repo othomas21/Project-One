@@ -1,0 +1,43 @@
+# Python files and API directory (for local development only)
+api/**
+**/*.py
+requirements.txt
+Dockerfile
+
+# Test files
+__tests__/**
+test-results/**
+tests/**
+playwright-report/**
+*.test.js
+*.test.ts
+*.spec.ts
+*.spec.js
+
+# Documentation
+docs/**
+*.md
+CHANGELOG.md
+README.md
+
+# Scripts
+scripts/**
+
+# Development files
+.env.local
+.env.example
+dev.log
+
+# Build artifacts
+tsconfig.tsbuildinfo
+.next
+dist
+build
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
