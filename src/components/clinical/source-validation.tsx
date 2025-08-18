@@ -170,13 +170,12 @@ export function SourceValidation({
 }: SourceValidationProps) {
   const [showDetails, setShowDetails] = useState(false);
   
-  const config = VALIDATION_CONFIG[validation.status];
   const qualityConfig = QUALITY_CONFIG[validation.quality];
   const peerReviewConfig = PEER_REVIEW_CONFIG[validation.peerReviewStatus];
   const PeerReviewIcon = peerReviewConfig.icon;
 
   const checksCount = Object.values(validation.checks).filter((check, index) => 
-    index < 5 ? check === true : check >= 80
+    index < 5 ? check === true : (typeof check === 'number' && check >= 80)
   ).length;
   const totalChecks = 6; // 5 boolean checks + 1 content relevance
 
